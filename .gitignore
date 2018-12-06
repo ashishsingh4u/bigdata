@@ -1,0 +1,6 @@
+# compiled output
+/project
+
+# IDE and editors
+/.idea
+.DS_Store

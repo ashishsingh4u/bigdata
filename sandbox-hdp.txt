@@ -1,0 +1,69 @@
+TOP HDP SANDBOX
+When you want to stop/shutdown your HDP sandbox, run the following commands:
+
+docker stop sandbox-hdp
+docker stop sandbox-proxy
+RESTART HDP SANDBOX
+When you want to re-start your sandbox, run the following commands:
+
+docker start sandbox-hdp
+docker start sandbox-proxy
+REMOVE HDP SANDBOX
+A container is an instance of the Sandbox image. You must stop container dependancies before removing it. Issue the following commands:
+
+docker stop sandbox-hdp
+docker stop sandbox-proxy
+docker rm sandbox-hdp
+docker rm sandbox-proxy
+
+docker exec -it sandbox-hdp /bin/bash
+ambari-admin-password-reset
+docker cp info.csv sandbox-hdp:/home/maria_dev/info.csv
+val df = spark.read.format("csv").option("header", "true").load("/user/maria_dev/info.csv")
+ssh -p 2222 root@localhost
+
+old password: hadoop
+new password: dragon1982
+
+ssh -p 2222 maria_dev@localhost
+
+libraryDependencies += "org.apache.spark" %% "spark-core" % "2.11-2.3.0.2.6.5.0-292"
+
+http://nexus-private.hortonworks.com/nexus/content/groups/public
+
+resolvers := List("Hortonworks Releases" at "http://nexus-private.hortonworks.com/nexus/content/groups/public/", "Jetty Releases" at "http://repo.hortonworks.com/content/repositories/jetty-hadoop/")
+
+libraryDependencies += "org.apache.spark" %% "spark-core" % "2.3.0.2.6.5.0-292"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0.2.6.5.0-292"
+libraryDependencies += "org.apache.spark" %% "spark-hive" % "2.3.0.2.6.5.0-292"
+libraryDependencies += "org.apache.spark" %% "spark-streaming" % "2.3.0.2.6.5.0-292"
+libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.3.0.2.6.5.0-292"
+docker cp bigdata_2.11-2.3.0.2.6.5.0-292_0.1.jar sandbox-hdp:/home/maria_dev/bigdata
+
+spark-submit --master yarn --deploy-mode cluster bigdata_2.11-2.3.0.2.6.5.0-292_0.1.jar
+spark-submit --class example.HelloStreaming --master yarn --deploy-mode cluster bigdata_2.11-2.3.0.2.6.5.0-292_0.1.jar
+spark-submit --class example.HelloStreaming --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.0 --master yarn --deploy-mode cluster --conf "spark.yarn.submit.waitAppCompletion=false" bigdata_2.11-2.3.0.2.6.5.0-292_0.1.jar
+
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic test
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper localhost:2181 --list
+/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list localhost:6667 --topic test-topic
+/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list 172.18.0.2:6667 --topic test-topic
+/usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server 172.18.0.2:6667 --topic test-topic --from-beginning
+
+/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list 172.18.0.2:6667 --property "parse.key=true" --property "key.separator=:" --topic test-topic
+  
+
+clone and change environment variable in docker-compose.yml from KAFKA_ADVERTISED_HOST_NAME to KAFKA_ADVERTISED_LISTENERS, and everything will work as expected.
+netstat -nap | grep 6667
+tcp        0      0 172.18.0.2:6667         0.0.0.0:*               LISTEN
+"/user/maria_dev/bigdata-streaming"
+
+User: techienotes, root
+Password: Techie@Notes
+
+Ambari Admin: admin
+Password: admin
+
+ssh sandbox-hdp.hortonworks.com
+http://sandbox-hdp.hortonworks.com:8888/splash2.html

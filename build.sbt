@@ -11,7 +11,8 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion,
   "org.apache.spark" %% "spark-hive" % sparkVersion,
   "org.apache.spark" %% "spark-streaming" % sparkVersion,
-  "org.apache.spark" %% "spark-mllib" % sparkVersion //, "org.apache.spark" %% "spark-sql-kafka-0-10_2.11"
+  "org.apache.spark" %% "spark-mllib" % sparkVersion,
+  "org.apache.spark" %% "spark-sql-kafka-0-10_2.11" % sparkVersion
 )
 
 resolvers := List("Hortonworks Releases" at "http://nexus-private.hortonworks.com/nexus/content/groups/public/", "Jetty Releases" at "http://repo.hortonworks.com/content/repositories/jetty-hadoop/")
